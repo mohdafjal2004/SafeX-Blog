@@ -14,7 +14,6 @@ const authorizeUser = (req, res, next) => {
       }
       //So name "user" is just used for convinience,use any
       req.user = decoded;
-      console.log(decoded) 
       next();
     });
   } else {

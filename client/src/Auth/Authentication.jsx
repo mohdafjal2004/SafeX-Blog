@@ -1,8 +1,13 @@
 import { useState } from "react";
 import "./Authentication.css";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { getToken } from "../store/tokenSlice";
 
 const Authentication = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     email: "",
     password: "",
@@ -24,12 +29,13 @@ const Authentication = () => {
       );
       console.log(response);
       if (response.status === 201) {
-        // setloginResponse("Login Successful");
         setloginResponse(response.data.message);
-        setUser({
-          email: "",
-          password: "",
-        });
+
+        //Dispatching the user token to store
+        dispatch(getToken(response.data.token));
+
+        // After dispatching the token, navigate
+        navigate("/home");
       }
     } catch (error) {
       if (error.response.status === 401) {

@@ -37,11 +37,12 @@ const addUser = async (req, res) => {
 // * Login User
 const loginUser = async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { name, email, password } = req.body;
     console.log(req.body);
 
     // Verifying email
     let user = await User.findOne({ email });
+
     if (!user) {
       return res.status(401).json({ message: "Wrong Email" });
     }
@@ -51,6 +52,7 @@ const loginUser = async (req, res) => {
     if (!comparePassword) {
       return res.status(401).json({ message: "Wrong Password" });
     }
+
     // After the successful authentication, we use jwt.sign()
     // for creating the token which takes two arguments one is
     // payload(email here) data from user and second is secret Key
@@ -63,4 +65,19 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { addUser, loginUser };
+// *Get User Details
+const getUser = async (req, res) => {
+  //req.user is the same object which was passed the decoded user
+  //data from token in JWT Middleware
+  try {
+    const userEmail = req.user.email;
+    const user = await User.findOne({ email: userEmail });
+    if (!user) {
+      return res.status(401).json({ message: "Unauthorized" });
+    }
+    const { name, email } = user;
+    return res.status(201).json({ name, email });
+  } catch (error) {}
+};
+
+module.exports = { addUser, loginUser, getUser };
