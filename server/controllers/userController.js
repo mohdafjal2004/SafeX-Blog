@@ -38,16 +38,16 @@ const addUser = async (req, res) => {
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
-    console.log(req);
+    console.log(req.body);
 
     // Verifying email
-    let Emailuser = await User.findOne({ email });
-    if (!Emailuser) {
+    let user = await User.findOne({ email });
+    if (!user) {
       return res.status(401).json({ message: "Wrong Email" });
     }
 
     // Verifying password
-    const comparePassword = await bcrypt.compare(password, user.password);
+    let comparePassword = await bcrypt.compare(password, user.password);
     if (!comparePassword) {
       return res.status(401).json({ message: "Wrong Password" });
     }
@@ -57,7 +57,7 @@ const loginUser = async (req, res) => {
 
     const token = jwt.sign({ email }, secretKey);
 
-    return res.status(201).json({ token, message: "Login Successful" });
+    return res.status(201).json({ token, message: "Login Successfull" });
   } catch (error) {
     res.status(500).json({ message: "Server Side error in login user" });
   }
