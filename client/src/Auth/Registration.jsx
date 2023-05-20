@@ -1,14 +1,14 @@
-import { useEffect, useState } from "react";
-import "./Authentication.css";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { getToken } from "../store/tokenSlice";
 
-const Authentication = () => {
+const Registration = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
+    name: "",
     email: "",
     password: "",
   });
@@ -24,33 +24,33 @@ const Authentication = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/loginUser",
+        "http://localhost:5000/auth/addUser",
         user
       );
+      console.log(response);
       if (response.status === 201) {
         setloginResponse(response.data.message);
 
-        //Dispatching the user token to store
-        dispatch(getToken(response.data.token));
-
-        // After dispatching the token, navigate
-        navigate("/home");
+        // After dispatching the token, navigate to login
+        navigate("/auth");
       }
     } catch (error) {
-      if (error.response.status === 401) {
-        setloginResponse(error.response.data.message);
-      }
-
-      setUser({
-        email: "",
-        password: "",
-      });
+      //   if (error.response.status === 400) {
+      console.log(error.response.data.message);
+      setloginResponse(error.response.data.message);
     }
   };
 
   return (
     <div className="form">
-      <h1>Sign In</h1>
+      <h1>Sign Up</h1>
+      <input
+        type="text"
+        className="input-form"
+        value={user.name}
+        name="name"
+        onChange={handleChange}
+      />
       <input
         type="email"
         className="input-form"
@@ -73,4 +73,4 @@ const Authentication = () => {
   );
 };
 
-export default Authentication;
+export default Registration;

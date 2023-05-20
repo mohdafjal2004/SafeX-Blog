@@ -27,8 +27,8 @@ const addUser = async (req, res) => {
     // After the successful registration, we use jwt.sign()
     // for creating the token which takes two arguments one is
     // payload(here email) data from user and second is secret Key
-    const token = jwt.sign({ email }, secretKey);
-    return res.status(201).json({ token, message: "Registration successful" });
+
+    return res.status(201).json({ message: "Registration successful" });
   } catch (error) {
     res.status(500).json({ message: "Server side error in adding user" });
   }
@@ -73,7 +73,7 @@ const getUser = async (req, res) => {
     const userEmail = req.user.email;
     const user = await User.findOne({ email: userEmail });
     if (!user) {
-      return res.status(401).json({ message: "Unauthorized" });
+      return res.status(401).json({ message: "User data not available in DB" });
     }
     const { name, email } = user;
     return res.status(201).json({ name, email });
