@@ -1,0 +1,12 @@
+.image {
+  border: 2px solid red;
+  width: 800px;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 20px;
+}
