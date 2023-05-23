@@ -71,13 +71,16 @@ const getUser = async (req, res) => {
   //data from token in JWT Middleware
   try {
     const userEmail = req.user.email;
+    //req.user 𝗰𝗼𝗻𝘁𝗮𝗶𝗻𝘀 𝘁𝗵𝗲 𝗱𝗲𝗰𝗼𝗱𝗲𝗱 𝗱𝗮𝘁𝗮 𝗳𝗿𝗼𝗺 𝗝𝗪𝗧
     const user = await User.findOne({ email: userEmail });
     if (!user) {
       return res.status(401).json({ message: "User data not available in DB" });
     }
     const { name, email } = user;
     return res.status(201).json({ name, email });
-  } catch (error) {}
+  } catch (error) {
+    res.send("Server side error");
+  }
 };
 
 module.exports = { addUser, loginUser, getUser };
