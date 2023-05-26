@@ -7,7 +7,7 @@ const blogSchema = new mongoose.Schema({
   },
   imageFile: {
     data: Buffer,
-    type: String,
+    type: String, 
   },
 
   BlogTitle: {
