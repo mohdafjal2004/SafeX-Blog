@@ -32,6 +32,7 @@ const Authentication = () => {
 
         //Dispatching the user token to store
         dispatch(getToken(response.data.token));
+     console.log(response.data.token);
 
         // After dispatching the token, navigate
         navigate("/home");

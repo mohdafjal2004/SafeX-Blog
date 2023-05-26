@@ -10,7 +10,7 @@ const PORT = 5000;
 connectDB();
 
 // For handling JSON data
-app.use(express.json({ limit: "0" }));
+app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "0" }));
 
 // for handling CORS 

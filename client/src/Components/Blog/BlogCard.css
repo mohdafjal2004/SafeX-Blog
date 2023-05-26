@@ -1,0 +1,18 @@
+.card {
+  border: 2px solid black;
+}
+
+.card-wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.card-container {
+  margin: 10px 10px;
+  height: auto;
+  width: auto;
+  border: 2px solid red;
+}
+.card-imageFile {
+  height: 100px;
+  width: 100px;
+}

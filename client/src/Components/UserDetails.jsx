@@ -28,7 +28,7 @@ const UserDetails = () => {
       dispatch(getUser(response.data));
       setLoading(false);
     } catch (error) {
-      console.log(error + "Catch Error");
+      console.log(error + " Catch Error");
     }
   };
 

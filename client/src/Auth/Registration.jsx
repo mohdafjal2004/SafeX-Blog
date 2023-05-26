@@ -66,7 +66,7 @@ const Registration = () => {
         onChange={handleChange}
       />
       <button className="btn-form" onClick={handleSubmit}>
-        <b>Login</b>
+        <b>Sign Up</b>
       </button>
       <h4>{loginResponse && <p>{loginResponse}</p>}</h4>
     </div>
