@@ -3,11 +3,9 @@ const Image = require("../Models/imageModel");
 //Using multer for handling image
 const imageUpload = async (req, res) => {
   try {
-    console.log(req.file);
     if (!req.file) {
       res.status(400).json({ message: "No file uploaded" });
     }
-
     const { buffer, mimetype } = req.file;
     const image = new Image({
       file: buffer.toString("base64"),
@@ -16,6 +14,8 @@ const imageUpload = async (req, res) => {
 
     const saveImage = await image.save();
     res.status(201).json({ saveImage });
+
+    
   } catch (error) {
     console.log(error + "error of controller");
   }
