@@ -1,14 +1,12 @@
 import React from "react";
 import UserDetails from "./UserDetails";
-import Navbar from "./Navbar";
-import GetAllBlogs from "./Blog/GetAllBlogs";
+import Hero from "./Hero";
 
 const HomePage = () => {
   return (
     <div>
-      <Navbar />
-      <UserDetails/>
-      <GetAllBlogs />
+      <Hero />
+      <UserDetails />
     </div>
   );
 };

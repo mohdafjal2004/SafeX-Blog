@@ -1,0 +1,76 @@
+.container {
+  min-height: 50vh;
+  min-width: none;
+  background-color: black;
+  width: screen;
+  text-align: left;
+  padding-left: 20px;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  margin-top: 200px;
+  margin-bottom: 200px;
+}
+.title {
+  color: white;
+  font-size: 100px;
+  font-weight: 500;
+  margin-top: 20px;
+}
+.x {
+  color: chartreuse;
+  font-size: larger;
+}
+.para {
+  color: white;
+  width: 67%;
+  font-size: larger;
+}
+.wlcmmsg {
+  color: white;
+  font-size: larger;
+  /* margin-bottom: 200px; */
+}
+@media screen and (max-width: 280px), (max-width: 420px) {
+  .container {
+    /* min-height: 30vh; */
+    min-width: 100vw;
+    background-color: black;
+    text-align: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    margin-top: 150px;
+  }
+  .title {
+    color: white;
+    font-size: 30px;
+    font-weight: 500;
+    margin-top: 20px;
+  }
+  .para {
+    color: white;
+    width: 100%;
+    font-size: 15px;
+    padding-right: 20px;
+  }
+  .wlcmmsg {
+    color: white;
+    font-size: larger;
+    margin-bottom: 200px;
+  }
+}
+
+@media (min-width: 570px) {
+  .container {
+    min-width: 100vw;
+    background-color: black;
+    text-align: left;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+      Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+      sans-serif;
+    margin-top: 290px;
+  }
+  .title {
+    text-align: left;
+  }
+}

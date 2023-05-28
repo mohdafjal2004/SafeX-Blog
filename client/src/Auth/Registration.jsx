@@ -71,7 +71,7 @@ const Registration = () => {
         </button>
         <div className="route">
           Already a User ?
-          <Link to="/">
+          <Link to="/auth">
             <h3 className="route-btn">Sign In</h3>
           </Link>
         </div>

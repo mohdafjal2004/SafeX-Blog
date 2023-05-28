@@ -1,0 +1,17 @@
+.btnDiv {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.addIcon {
+  height: 70px;
+  width: 70px;
+}
+
+.addIcon:hover {
+  cursor: pointer;
+}

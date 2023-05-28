@@ -1,13 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
+import "../Styles/BlogDetails.css";
+import TextareaAutosize from "react-textarea-autosize";
 
 const BlogDetails = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   console.log(id);
 
+  // * Entire API Data object
   const [data, setData] = useState({});
+
+  // * Enabling or disabling the edit mode
   const [editMode, setEditMode] = useState(false);
 
   // * States for updating
@@ -17,6 +22,7 @@ const BlogDetails = () => {
 
   // * State for error
   const [error, setError] = useState("");
+
   const fetchBlog = async () => {
     try {
       const blogData = await axios.get(
@@ -41,8 +47,8 @@ const BlogDetails = () => {
     if (data && data.Subject) {
       setSubjectUpdate(data.Subject);
     }
-    if (data && data.BlogTitle) {
-      setNotesUpdate(data.BlogTitle);
+    if (data && data.Notes) {
+      setNotesUpdate(data.Notes);
     }
   }, [editMode]);
 
@@ -96,60 +102,81 @@ const BlogDetails = () => {
   };
 
   return (
-    <div>
-      <img
-        src={`data:image/jpeg;base64,${data.cover}`}
-        alt=""
-        style={{ height: "100px" }}
-      />
-      <h1>
-        {editMode ? (
-          <input
-            type="text"
-            value={titleUpdate}
-            name="BlogTitle"
-            onChange={handleTitleChange}
+    <div className="detailContainer">
+      <div className="detailWrapper">
+        <img
+          src={`data:image/jpeg;base64,${data.cover}`}
+          alt=""
+          className="blogCover"
+        />
+        <h1>
+          {editMode ? (
+            <input
+              type="text"
+              value={titleUpdate}
+              name="BlogTitle"
+              onChange={handleTitleChange}
+              className="inputTitle"
+            />
+          ) : (
+            <p className="BlogTitle">{data.BlogTitle}</p>
+          )}
+        </h1>
+        <div>
+          {editMode ? (
+            <textarea
+              type="text"
+              value={SubjectUpdate}
+              name="Subject"
+              onChange={handleSubjectChange}
+              className="inputTitle"
+              maxLength="10"
+            />
+          ) : (
+            <p className="blogSubject">{data.Subject}</p>
+          )}
+        </div>
+        <div className="imageMargin">
+          <img
+            src={`data:image/jpeg;base64,${data.imageFile}`}
+            alt=""
+            style={{ height: "100px" }}
+            className="imageFile"
           />
-        ) : (
-          <p>{data.BlogTitle}</p>
-        )}
-      </h1>
-      <div>
-        {editMode ? (
-          <textarea
-            type="text"
-            value={SubjectUpdate}
-            name="Subject"
-            onChange={handleSubjectChange}
-          />
-        ) : (
-          data.Subject
-        )}
-      </div>
-      <img
-        src={`data:image/jpeg;base64,${data.imageFile}`}
-        alt=""
-        style={{ height: "100px" }}
-      />
-      <div>
-        {editMode ? (
-          <textarea
-            type="text"
-            value={NotesUpdate}
-            name="Notes"
-            onChange={handleNotesChange}
-          />
-        ) : (
-          data.Notes
-        )}
-      </div>
-      {editMode ? (
-        <button onClick={handleSave}>Save</button>
-      ) : (
-        <button onClick={handleUpdate}>Update</button>
-      )}
+        </div>
+        <div>
+          {editMode ? (
+            <TextareaAutosize
+              minRows={5}
+              maxRows={20}
+              type="text"
+              value={NotesUpdate}
+              name="Notes"
+              onChange={handleNotesChange}
+              className="inputTitle"
+            />
+          ) : (
+            <p className="blogNotes">{data.Notes}</p>
+          )}
+        </div>
 
-      <button onClick={handleDelete}>Delete</button>
+        <div className="btns">
+          {editMode ? (
+            <button onClick={handleSave} className="btn">
+              Save
+            </button>
+          ) : (
+            <button onClick={handleUpdate} className="btn">
+              Update
+            </button>
+          )}
+
+          <button onClick={handleDelete} className="btn">
+            Delete
+          </button>
+        </div>
+      <h2>{error}</h2>
+      </div>
     </div>
   );
 };

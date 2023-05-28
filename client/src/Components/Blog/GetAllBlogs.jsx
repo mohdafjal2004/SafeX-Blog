@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import BlogCard from "./BlogCard";
 import PostButton from "./PostButton";
+import "../Styles/GetAllBlogs.css";
 
 const GetAllBlogs = () => {
   const [blog, setBlog] = useState([]);
@@ -15,8 +16,12 @@ const GetAllBlogs = () => {
     fetchBlogs();
   }, []);
   return (
-    <div style={{ position: "relative" }}>
+    
+    <div className="blogsContainer">
+      <div className="empty"></div>
       <PostButton />
+      <h1>Recent Blogs </h1>
+
       <BlogCard blog={blog} />
     </div>
   );

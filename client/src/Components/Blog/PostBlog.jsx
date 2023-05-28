@@ -1,8 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./PostBlog.css";
+import TextareaAutosize from "react-textarea-autosize";
+import { useNavigate } from "react-router-dom";
 
 const PostBlog = () => {
+  const navigate = useNavigate();
+
   //Handling the state of 𝗶𝗻𝗽𝘂𝘁 𝘁𝗲𝘅𝘁
   const [blogForm, setBlogForm] = useState({
     BlogTitle: "",
@@ -39,7 +43,7 @@ const PostBlog = () => {
           },
         }
       );
-
+      navigate('/home')
       console.log(blog);
     } catch (error) {
       console.log(error);
@@ -48,32 +52,52 @@ const PostBlog = () => {
 
   return (
     <div>
-      <div className="wrapper">
-        <div className="container">
-          <input type="file" onChange={handleFileChange} name="cover" />
-          <input type="file" onChange={handleFileChange} name="imageFile" />
+      <h1>Write Your Blog Here </h1>
+      <div className="postContainer">
+        <div className="postWrapper">
+          <input
+            type="file"
+            onChange={handleFileChange}
+            name="cover"
+            className="image"
+          />
+
+          <input
+            type="file"
+            onChange={handleFileChange}
+            name="imageFile"
+            className="image"
+          />
           <input
             type="text"
             onChange={handleChange}
             value={blogForm.BlogTitle}
             name="BlogTitle"
+            placeholder="Enter the title of your blog"
+            className="inputBlog"
           />
           <input
             type="text"
             onChange={handleChange}
             value={blogForm.Subject}
             name="Subject"
+            placeholder="Enter Subject of the blog"
+            className="inputBlog"
+            maxLength={100}
           />
-          <input
+          <textarea
             type="text"
             onChange={handleChange}
             value={blogForm.Notes}
             name="Notes"
+            className="inputBlog"
+            placeholder="Write you blog here . . ."
           />
         </div>
+        <button onClick={handleCreate} className="postButton">
+          Create Blog
+        </button>
       </div>
-
-      <button onClick={handleCreate}>Create Blog</button>
     </div>
   );
 };

@@ -3,8 +3,6 @@ import "./BlogCard.css";
 import { Link } from "react-router-dom";
 
 const BlogCard = ({ blog }) => {
- 
-
   console.log(blog);
   return (
     <div className="card">
@@ -22,9 +20,9 @@ const BlogCard = ({ blog }) => {
                   alt=""
                   className="card-imageFile"
                 />
-                <p>{item.BlogTitle}</p>
-                <p>{item.Notes}</p>
-                <p>{item.Subject}</p>
+                <div className="blogText">
+                  <p className="text-title">{item.BlogTitle}</p>
+                </div>
               </Link>
             );
           })

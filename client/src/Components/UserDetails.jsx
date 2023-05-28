@@ -3,6 +3,7 @@ import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
+import GetAllBlogs from "./Blog/GetAllBlogs";
 
 const UserDetails = () => {
   //a state variable to store the response from API
@@ -40,7 +41,7 @@ const UserDetails = () => {
     return <div>Loading...</div>;
   }
 
-  return <div>UserDetails</div>;
+  return <div><GetAllBlogs/></div>;
 };
 
 export default UserDetails;

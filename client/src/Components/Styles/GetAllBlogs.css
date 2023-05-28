@@ -1,0 +1,73 @@
+.blogsContainer {
+  background-color: black;
+  height: 100vh;
+  display: flex;
+  width: 100vw;
+  flex-direction: column;
+}
+.empty {
+  border-top: 20px solid whitesmoke;
+  width: 100;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+h1 {
+  color: white;
+  margin-bottom: 100px;
+  width: 100%;
+  text-align: center;
+}
+@media (max-width: 280px) {
+  .empty {
+    border-top: 0.5px solid whitesmoke;
+    width: 90%;
+    margin: 0 40px;
+    margin-bottom: 20px;
+  }
+  h1 {
+    display: block;
+    text-align: center;
+    margin-left: 25px;
+  }
+}
+@media (max-width: 420px) {
+  .empty {
+    border-top: 0.5px solid whitesmoke;
+    width: 100%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-left: 45px;
+  }
+  .blogsContainer {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    min-width: 100vw;
+    flex-direction: column;
+  }
+}
+@media (max-width: 1000px) {
+  .empty {
+    border-top: 0.5px solid whitesmoke;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+    margin-left: 45px;
+  }
+
+  .blogsContainer {
+    background-color: black;
+    height: 100vh;
+    display: flex;
+    min-width: 100vw;
+    flex-direction: column;
+  }
+}
+@media (min-width: 1001px) {
+  .empty {
+    border-top: 1px solid whitesmoke;
+    width: 100%;
+    padding-left: 40px;
+    margin-top: 30px;
+  }
+}

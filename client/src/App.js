@@ -9,12 +9,14 @@ import UploadImage from "./Components/UploadImage";
 import GetAllBlogs from "./Components/Blog/GetAllBlogs";
 import BlogDetails from "./Components/Blog/BlogDetails";
 import PostBlog from "./Components/Blog/PostBlog";
+import Navbar from "./Components/Navbar";
 // import UploadImage from "./Components/UploadImage";
 
 function App() {
   return (
     <div className="App">
       <Router>
+        <Navbar/>
         <Routes>
           <Route path="/getAllBlogs" element={<GetAllBlogs />} />
           <Route path="/post" element={<PostBlog />} />

@@ -10,11 +10,16 @@ const Navbar = () => {
   return (
     <div className="nav">
       <div className="wrapper">
-        <Link to='/home'>
+        <Link to="/home">
           <img src={logo} alt="" className="logo" />
         </Link>
-        <div>
-          <Link to="/user" className="user"> User : {userData?.name}</Link>
+        <div className="leftNav">
+          <Link to="/auth" className="user">
+            Logout
+          </Link>
+          <Link to="/user" className="user">
+            User : {userData?.name}
+          </Link>
         </div>
       </div>
     </div>
