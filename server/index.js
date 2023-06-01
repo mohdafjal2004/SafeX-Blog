@@ -6,14 +6,14 @@ const cors = require("cors");
 const Filerouter = require("./routes/imageRoutes");
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 connectDB();
 
 // For handling JSON data
 app.use(express.json({ limit: "10mb" }));
 app.use(express.urlencoded({ extended: true, limit: "0" }));
 
-// for handling CORS 
+// for handling CORS
 app.use(cors());
 
 app.use(function (err, req, res, next) {
@@ -21,7 +21,7 @@ app.use(function (err, req, res, next) {
   next(err);
 });
 
-//Registering all Routes
+//Registering all Routes 
 app.use("/auth", Authroutes);
 app.use("/blog", Blogroutes);
 app.use("/file", Filerouter);
