@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Styles/UploadImage.css";
 import axios from "axios";
 import GetImage from "./GetImage";
+import BaseAPI from "../baseUrl";
 
 const UploadImage = () => {
   const [selectedImage, setSelectedImage] = useState(null);
@@ -15,15 +16,11 @@ const UploadImage = () => {
     const formData = new FormData();
     formData.append("image", selectedImage);
     try {
-      const image = await axios.post(
-        "http://localhost:5000/file/imageUpload",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      const image = await axios.post(`${BaseAPI}/file/imageUpload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
 
       console.log(image);
       setEvent(true);

@@ -1,8 +1,8 @@
 import axios from "axios";
 import React, { useState } from "react";
 import "./PostBlog.css";
-import TextareaAutosize from "react-textarea-autosize";
 import { useNavigate } from "react-router-dom";
+import BaseAPI from "../../baseUrl";
 
 const PostBlog = () => {
   const navigate = useNavigate();
@@ -34,16 +34,12 @@ const PostBlog = () => {
       formData.append("BlogTitle", blogForm.BlogTitle);
       formData.append("Subject", blogForm.Subject);
       formData.append("Notes", blogForm.Notes);
-      const blog = await axios.post(
-        "http://localhost:5000/blog/post",
-        formData,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
-      navigate('/home')
+      const blog = await axios.post(`${BaseAPI}/blog/post`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      navigate("/home");
       console.log(blog);
     } catch (error) {
       console.log(error);

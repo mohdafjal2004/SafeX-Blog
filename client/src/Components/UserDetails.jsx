@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../store/userSlice";
 import { useNavigate } from "react-router-dom";
 import GetAllBlogs from "./Blog/GetAllBlogs";
+import BaseAPI from "../baseUrl";
 
 const UserDetails = () => {
   //a state variable to store the response from API
@@ -20,12 +21,12 @@ const UserDetails = () => {
 
   const details = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/auth/getUser", {
+      const response = await axios.get(`${BaseAPI}/auth/getUser`, {
         headers: {
           authorization: `Bearer ${token}`,
         },
       });
-     
+
       dispatch(getUser(response.data));
       setLoading(false);
     } catch (error) {
@@ -41,7 +42,11 @@ const UserDetails = () => {
     return <div>Loading...</div>;
   }
 
-  return <div><GetAllBlogs/></div>;
+  return (
+    <div>
+      <GetAllBlogs />
+    </div>
+  );
 };
 
 export default UserDetails;

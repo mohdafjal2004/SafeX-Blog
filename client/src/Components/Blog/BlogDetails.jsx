@@ -3,6 +3,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import "../Styles/BlogDetails.css";
 import TextareaAutosize from "react-textarea-autosize";
+import BaseAPI from "../../baseUrl";
 
 const BlogDetails = () => {
   const navigate = useNavigate();
@@ -25,9 +26,7 @@ const BlogDetails = () => {
 
   const fetchBlog = async () => {
     try {
-      const blogData = await axios.get(
-        `http://localhost:5000/blog/getById/${id}`
-      );
+      const blogData = await axios.get(`${BaseAPI}/blog/getById/${id}`);
       setData(blogData.data.blog);
     } catch (error) {
       if (error.response.status === 404) {
@@ -175,7 +174,7 @@ const BlogDetails = () => {
             Delete
           </button>
         </div>
-      <h2>{error}</h2>
+        <h2>{error}</h2>
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import BaseAPI from "../baseUrl";
 
 const GetImage = ({ event, setEvent }) => {
   const [data, setdata] = useState([]);
@@ -7,7 +8,7 @@ const GetImage = ({ event, setEvent }) => {
 
   const Image = async () => {
     try {
-      const imageData = await axios.get("http://localhost:5000/file/getImage");
+      const imageData = await axios.get(`${BaseAPI}/file/getImage`);
       console.log(imageData.data.image);
       setdata(imageData.data.image);
     } catch (error) {

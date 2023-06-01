@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import BaseAPI from "../baseUrl";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const Registration = () => {
   const handleSubmit = async () => {
     try {
       const response = await axios.post(
-        "http://localhost:5000/auth/addUser",
+        `${BaseAPI}/auth/addUser`,
         user
       );
       console.log(response);

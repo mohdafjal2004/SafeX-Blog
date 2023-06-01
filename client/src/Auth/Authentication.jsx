@@ -4,7 +4,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { getToken } from "../store/tokenSlice";
-
+import BaseAPI from '../baseUrl'
 const Authentication = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -23,10 +23,7 @@ const Authentication = () => {
 
   const handleSubmit = async () => {
     try {
-      const response = await axios.post(
-        "http://localhost:5000/auth/loginUser",
-        user
-      );
+      const response = await axios.post(`${BaseAPI}/auth/loginUser`, user);
       if (response.status === 201) {
         setloginResponse(response.data.message);
 
